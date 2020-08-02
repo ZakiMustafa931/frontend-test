@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NbThemeModule, NbLayoutModule, NbIconModule } from '@nebular/theme';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +11,8 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     NbThemeModule.forRoot(),
+    NbLayoutModule,
+    NbIconModule,
     BrowserModule,
     AppRoutingModule
   ],
