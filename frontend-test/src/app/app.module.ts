@@ -4,10 +4,14 @@ import { NbThemeModule, NbLayoutModule, NbIconModule } from '@nebular/theme';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PostListComponent } from './post-list/post-list.component';
+import { CommentListComponent } from './comment-list/comment-list.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PostListComponent,
+    CommentListComponent
   ],
   imports: [
     NbThemeModule.forRoot(),
