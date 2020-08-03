@@ -9,7 +9,7 @@ import { takeWhile } from 'rxjs/operators';
   styleUrls: ['./comment-list.component.scss']
 })
 export class CommentListComponent implements OnInit, OnChanges, OnDestroy {
-  commentId: number = null;
+  postId: number = null;
   comments: CommentModel[];
   alive = true;
 
@@ -27,25 +27,22 @@ export class CommentListComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   loadData() {
-    this.route.paramMap
+    this.route.queryParams
     .pipe(takeWhile(() => this.alive))
     .subscribe((params) =>
       {
-        if(params)
-        this.commentId = Number(params.get('id'));
-        this.readComments(this.commentId);
+        this.postId = Number(params.postId);
+        this.readComments(this.postId);
       }
     );
   }
 
-  readComments(commentId: number) {
+  readComments(postId: number) {
     fetch('https://jsonplaceholder.typicode.com/comments')
     .then(response => response.json())
     .then(comments => {
-      let arr: CommentModel[] = []
-      if (commentId) {
-        arr.push(comments.find((comment) => comment.id === commentId));
-        this.comments = arr;
+      if (postId) {
+        this.comments = comments.filter((comment) => comment.postId === postId);
       }
       else {
         this.comments = comments;
@@ -54,7 +51,6 @@ export class CommentListComponent implements OnInit, OnChanges, OnDestroy {
     .catch((err: any) => {
       console.error('An error occurred:', err && err.error);
     });
-
   }
 
   ngOnDestroy() {
