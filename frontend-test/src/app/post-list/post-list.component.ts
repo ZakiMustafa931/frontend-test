@@ -62,7 +62,7 @@ export class PostListComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   goToPost(postId) {
-    console.log("post id: ",JSON.stringify(postId));
+    if(this.postId) return;
     this.router.navigate([postId], { relativeTo: this.route });
   }
 
