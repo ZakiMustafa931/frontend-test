@@ -2,10 +2,13 @@
     padding-top: 3rem;
     padding-left: 3rem;
     padding-right: 3rem;
-    .card {
+    .post {
         padding: 12px;
         background-color: #edeef0;
         margin-top: 1rem;
         margin-bottom: 1rem;
+        .label {
+            font-weight: 600;
+        }
     }
 }

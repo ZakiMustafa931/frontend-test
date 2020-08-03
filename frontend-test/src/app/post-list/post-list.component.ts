@@ -1,3 +1,4 @@
+import { PostModel } from './../models/post.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./post-list.component.scss']
 })
 export class PostListComponent implements OnInit {
-  posts: any;
+  posts: PostModel[];
 
   constructor() { }
 
@@ -18,8 +19,12 @@ export class PostListComponent implements OnInit {
     fetch('https://jsonplaceholder.typicode.com/posts')
     .then(response => response.json())
     .then(json => {this.posts = json
-      console.log("dumb cats: ",JSON.stringify(this.posts));
+      console.log("post list: ",JSON.stringify(this.posts));
+    })
+    .catch((err: any) => {
+      console.error('An error occurred:', err && err.error);
     });
+    ;
   }
 
 }
