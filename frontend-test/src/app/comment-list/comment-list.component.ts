@@ -1,5 +1,5 @@
 import { CommentModel } from './../models/comment.model';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { takeWhile } from 'rxjs/operators';
 
@@ -8,7 +8,7 @@ import { takeWhile } from 'rxjs/operators';
   templateUrl: './comment-list.component.html',
   styleUrls: ['./comment-list.component.scss']
 })
-export class CommentListComponent implements OnInit, OnDestroy {
+export class CommentListComponent implements OnInit, OnChanges, OnDestroy {
   commentId: number = null;
   comments: CommentModel[];
   alive = true;
@@ -19,6 +19,14 @@ export class CommentListComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+   this.loadData();
+  }
+  
+  ngOnChanges(): void {
+   this.loadData();
+  }
+
+  loadData() {
     this.route.paramMap
     .pipe(takeWhile(() => this.alive))
     .subscribe((params) =>

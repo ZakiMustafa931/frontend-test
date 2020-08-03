@@ -1,5 +1,5 @@
 import { PostModel } from './../models/post.model';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { takeWhile } from 'rxjs/operators';
 
@@ -8,7 +8,7 @@ import { takeWhile } from 'rxjs/operators';
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.scss']
 })
-export class PostListComponent implements OnInit, OnDestroy {
+export class PostListComponent implements OnInit, OnChanges, OnDestroy {
   postId: number = null;
   posts: PostModel[];
   alive = true;
@@ -19,6 +19,14 @@ export class PostListComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.loadData();
+  }
+
+  ngOnChanges() : void {
+    this.loadData();
+  }
+
+  loadData() {
     this.route.paramMap
     .pipe(takeWhile(() => this.alive))
     .subscribe((params) =>
