@@ -1,7 +1,7 @@
 import { PostModel } from './../models/post.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { takeWhile, switchMap } from 'rxjs/operators';
+import { takeWhile } from 'rxjs/operators';
 
 @Component({
   selector: 'app-post-list',
@@ -20,31 +20,38 @@ export class PostListComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.readPosts();
     this.route.paramMap
-    // .pipe(takeWhile(() => this.alive))
+    .pipe(takeWhile(() => this.alive))
     .subscribe((params) =>
       {
-        let pi = Number(params.get('id'));
-        console.log("params: ",pi);
+        if(params)
+        this.postId = Number(params.get('id'));
+        this.readPosts(this.postId);
       }
     );
-      //   this.parentRouteId = +params["id"];
-      // });
   }
 
-  readPosts() {
+  readPosts(postId: number) {
     fetch('https://jsonplaceholder.typicode.com/posts')
     .then(response => response.json())
-    .then(posts => {this.posts = posts})
+    .then(posts => {
+      let arr: PostModel[] = []
+      if (postId) {
+        arr.push(posts.find((post) => post.id === postId));
+        this.posts = arr;
+      }
+      else {
+        this.posts = posts;
+      }
+    })
     .catch((err: any) => {
       console.error('An error occurred:', err && err.error);
     });
-    ;
+
   }
 
   ngOnDestroy() {
-    this.alive =false;
+    this.alive = false;
   }
 
 }
