@@ -12,24 +12,10 @@ const routes: Routes = [
     path: 'posts',
     component: PostListComponent,
   },
-  // {
-  //   path: 'privacy-policy',
-  //   loadChildren: () => import('./legal/legal.module').then(m => m.LegalModule),
-  // },
-  // {
-  //   path: 'terms-condition',
-  //   loadChildren: () => import('./legal/legal.module').then(m => m.LegalModule),
-  // },
-  // {
-  //   path: 'inquiry',
-  //   component: JpjMainComponent,
-  //   canActivate: [AuthGuardService],
-  // },
-  // {
-  //   path: 'replacement',
-  //   component: JpnReplacementMainComponent,
-  //   canActivate: [AuthGuardService],
-  // }
+  {
+    path: 'posts/:id',
+    component: PostListComponent,
+  }
 ];
 
 @NgModule({
