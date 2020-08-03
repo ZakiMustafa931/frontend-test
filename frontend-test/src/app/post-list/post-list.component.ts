@@ -6,10 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./post-list.component.scss']
 })
 export class PostListComponent implements OnInit {
+  posts: any;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.readPosts();
+  }
+
+  readPosts() {
+    fetch('https://jsonplaceholder.typicode.com/posts')
+    .then(response => response.json())
+    .then(json => {this.posts = json
+      console.log("dumb cats: ",JSON.stringify(this.posts));
+    });
   }
 
 }

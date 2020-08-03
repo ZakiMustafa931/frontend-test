@@ -9,11 +9,7 @@ export class AppComponent implements OnInit{
   title = 'frontend-test';
   jsonRead: any;
 
-  ngOnInit() {
-    const jsonRead = this.readJSON();
-    console.log("jsonRead: ",JSON.stringify(this.jsonRead));
-    console.log("jsonRead: ",JSON.stringify(this.readJSON()));
-  }
+  ngOnInit() { }
 
   readJSON() {
     fetch('https://jsonplaceholder.typicode.com/posts')
