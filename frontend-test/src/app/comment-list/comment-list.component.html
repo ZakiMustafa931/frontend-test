@@ -4,7 +4,10 @@
           Home
         </div>
     </div>
-    <nb-card *ngFor="let comment of comments" class="comment">
+    <div>
+        <input nbInput [(ngModel)]="searchText">
+    </div>
+    <nb-card *ngFor="let comment of comments | appFilter: searchText" class="comment">
         <div><span class="label">Post Id:</span> {{comment?.postId}}</div>
         <div><span class="label">Comment Id:</span> {{comment?.id}}</div>
         <div><span class="label">Name:</span> {{comment?.name}}</div>

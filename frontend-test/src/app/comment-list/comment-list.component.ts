@@ -12,6 +12,7 @@ export class CommentListComponent implements OnInit, OnChanges, OnDestroy {
   postId: number = null;
   comments: CommentModel[];
   alive = true;
+  searchText = "";
 
   constructor(
     private router: Router,
