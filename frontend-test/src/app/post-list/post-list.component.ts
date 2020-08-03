@@ -66,4 +66,8 @@ export class PostListComponent implements OnInit, OnChanges, OnDestroy {
     this.router.navigate([postId], { relativeTo: this.route });
   }
 
+  goToComments() {
+    this.router.navigateByUrl(`/comments?postId=${this.postId}`);
+  }
+
 }
