@@ -57,4 +57,7 @@ export class CommentListComponent implements OnInit, OnChanges, OnDestroy {
     this.alive = false;
   }
 
+  goToHome() {
+    this.router.navigateByUrl(`/`);
+  }
 }

@@ -1,4 +1,9 @@
 <div class="post-container">
+    <div class="card-container" (click)="goToHome()">
+        <div class="card card-small">
+          Home
+        </div>
+    </div>
     <nb-card *ngFor="let post of posts" class="post" (click)="goToPost(post.id)">
         <div><span class="label">UserId:</span> {{post?.userId}}</div>
         <div><span class="label">Post Id:</span> {{post?.id}}</div>

@@ -70,4 +70,8 @@ export class PostListComponent implements OnInit, OnChanges, OnDestroy {
     this.router.navigateByUrl(`/comments?postId=${this.postId}`);
   }
 
+  goToHome() {
+    this.router.navigateByUrl(`/`);
+  }
+
 }

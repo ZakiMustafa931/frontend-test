@@ -1,4 +1,9 @@
 <div class="comment-container">
+    <div class="card-container" (click)="goToHome()">
+        <div class="card card-small">
+          Home
+        </div>
+    </div>
     <nb-card *ngFor="let comment of comments" class="comment">
         <div><span class="label">Post Id:</span> {{comment?.postId}}</div>
         <div><span class="label">Comment Id:</span> {{comment?.id}}</div>
