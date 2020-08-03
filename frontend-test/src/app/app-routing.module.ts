@@ -1,3 +1,4 @@
+import { CommentListComponent } from './comment-list/comment-list.component';
 import { HomeComponent } from './home/home.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { NgModule } from '@angular/core';
@@ -15,7 +16,11 @@ const routes: Routes = [
   {
     path: 'posts/:id',
     component: PostListComponent,
-  }
+  },
+  {
+    path: 'comments',
+    component: CommentListComponent,
+  },
 ];
 
 @NgModule({

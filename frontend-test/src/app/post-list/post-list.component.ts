@@ -11,7 +11,6 @@ import { takeWhile } from 'rxjs/operators';
 export class PostListComponent implements OnInit, OnDestroy {
   postId: number = null;
   posts: PostModel[];
-  private sub: any;
   alive = true;
 
   constructor(

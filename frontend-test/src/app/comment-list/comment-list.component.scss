@@ -1,0 +1,14 @@
+.comment-container{
+    padding-top: 3rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    .comment {
+        padding: 12px;
+        background-color: #edeef0;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        .label {
+            font-weight: 600;
+        }
+    }
+}

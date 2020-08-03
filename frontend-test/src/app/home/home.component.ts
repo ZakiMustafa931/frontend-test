@@ -16,8 +16,11 @@ export class HomeComponent implements OnInit {
   }
 
   goToPosts() {
-    console.log("here");
     this.router.navigateByUrl('/posts');
+  }
+
+  goToComments() {
+    this.router.navigateByUrl('/comments');
   }
 
 }

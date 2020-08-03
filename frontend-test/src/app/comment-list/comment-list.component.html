@@ -1,1 +1,9 @@
-<p>comment-list works!</p>
+<div class="comment-container">
+    <nb-card *ngFor="let comment of comments" class="comment">
+        <div><span class="label">Post Id:</span> {{comment?.postId}}</div>
+        <div><span class="label">Comment Id:</span> {{comment?.id}}</div>
+        <div><span class="label">Name:</span> {{comment?.name}}</div>
+        <div><span class="label">Email:</span> {{comment?.email}}</div>
+        <div><span class="label">Body:</span> {{comment?.body}}</div>
+    </nb-card>
+</div>
