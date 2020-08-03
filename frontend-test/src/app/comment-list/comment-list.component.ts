@@ -1,3 +1,4 @@
+import { PostModel } from './../models/post.model';
 import { CommentModel } from './../models/comment.model';
 import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -10,6 +11,7 @@ import { takeWhile } from 'rxjs/operators';
 })
 export class CommentListComponent implements OnInit, OnChanges, OnDestroy {
   postId: number = null;
+  post: PostModel;
   comments: CommentModel[];
   alive = true;
   searchText = "";
@@ -48,6 +50,14 @@ export class CommentListComponent implements OnInit, OnChanges, OnDestroy {
       else {
         this.comments = comments;
       }
+    })
+    .catch((err: any) => {
+      console.error('An error occurred:', err && err.error);
+    });
+    fetch('https://jsonplaceholder.typicode.com/posts')
+    .then(response => response.json())
+    .then(posts => {
+      this.post = posts.find((post) => post.id === postId);
     })
     .catch((err: any) => {
       console.error('An error occurred:', err && err.error);

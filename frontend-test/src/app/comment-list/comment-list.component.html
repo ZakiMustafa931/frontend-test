@@ -7,6 +7,12 @@
     <div>
         <input nbInput [(ngModel)]="searchText">
     </div>
+    <nb-card *ngIf="postId" class="post">
+        <div><span class="label post-id">Post Id: {{post?.id}}</span></div>
+        <div><span class="label">UserId: </span>{{post?.userId}}</div>
+        <div><span class="label">Title: </span>{{post?.title}}</div>
+        <div><span class="label">Body: </span>{{post?.body}}</div>
+    </nb-card>
     <nb-card *ngFor="let comment of comments | appFilter: searchText" class="comment">
         <div><span class="label">Post Id:</span> {{comment?.postId}}</div>
         <div><span class="label">Comment Id:</span> {{comment?.id}}</div>

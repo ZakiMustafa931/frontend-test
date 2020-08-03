@@ -5,10 +5,14 @@
         </div>
     </div>
     <nb-card *ngFor="let post of posts" class="post" (click)="goToPost(post.id)">
-        <div><span class="label">UserId:</span> {{post?.userId}}</div>
+        <div><span class="label post-id">Post Id: {{post?.id}}</span></div>
+        <div><span class="label">UserId: </span>{{post?.userId}}</div>
+        <div><span class="label">Title: </span>{{post?.title}}</div>
+        <div><span class="label">Body: </span>{{post?.body}}</div>
+        <!-- <div><span class="label">UserId:</span> {{post?.userId}}</div>
         <div><span class="label">Post Id:</span> {{post?.id}}</div>
         <div><span class="label">Title:</span> {{post?.title}}</div>
-        <div><span class="label">Body:</span> {{post?.body}}</div>
+        <div><span class="label">Body:</span> {{post?.body}}</div> -->
     </nb-card>
     <div *ngIf="postId" class="card-container" (click)="goToComments()">
         <div class="card card-small comments">
