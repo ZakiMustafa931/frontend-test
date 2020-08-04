@@ -50,6 +50,7 @@ export class CommentListComponent implements OnInit, OnChanges, OnDestroy {
       else {
         this.comments = comments;
       }
+      this.comments.forEach((comment)=> comment.body = comment.body.replace(/\n/g, " "));
     })
     .catch((err: any) => {
       console.error('An error occurred:', err && err.error);
