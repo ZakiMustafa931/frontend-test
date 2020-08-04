@@ -40,8 +40,8 @@ export class CommentListComponent implements OnInit, OnChanges, OnDestroy {
     );
   }
 
-  readComments(postId: number) {
-    fetch('https://jsonplaceholder.typicode.com/comments')
+  async readComments(postId: number) {
+    await fetch('https://jsonplaceholder.typicode.com/comments')
     .then(response => response.json())
     .then(comments => {
       if (postId) {
@@ -54,7 +54,7 @@ export class CommentListComponent implements OnInit, OnChanges, OnDestroy {
     .catch((err: any) => {
       console.error('An error occurred:', err && err.error);
     });
-    fetch('https://jsonplaceholder.typicode.com/posts')
+    await fetch('https://jsonplaceholder.typicode.com/posts')
     .then(response => response.json())
     .then(posts => {
       this.post = posts.find((post) => post.id === postId);

@@ -38,8 +38,8 @@ export class PostListComponent implements OnInit, OnChanges, OnDestroy {
     );
   }
 
-  readPosts(postId: number) {
-    fetch('https://jsonplaceholder.typicode.com/posts')
+  async readPosts(postId: number) {
+    await fetch('https://jsonplaceholder.typicode.com/posts')
     .then(response => response.json())
     .then(posts => {
       let arr: PostModel[] = []
